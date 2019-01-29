@@ -63,14 +63,23 @@
 	</script>
 
 	<script>
-		// NoSleep library stops device from automatically sleeping
+		// NoSleep library stops device from automatically sleeping while listening
 		var noSleep = new NoSleep();
 		
+		$(window).blur(function(){
+			noSleep.disable();
+			noSleep.enable();
+		});
+		$(window).focus(function(){
+			noSleep.disable();
+			noSleep.enable();
+		});
+
 		// Start listening button
 		$("#start").click(function()
 		{
 			$(".control").toggleClass('hidden');
-			noSleep.enable();
+			
 			annyang.start({ autoRestart: true, continuous: false });
 			console.log("Started listening");
 		});
@@ -79,7 +88,7 @@
 		$("#stop").click(function()
 		{
 			$(".control").toggleClass('hidden');
-			noSleep.disable();
+			
 			annyang.abort();
 			console.log("Stopped listening");
 		});
