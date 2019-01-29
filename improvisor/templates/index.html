@@ -24,6 +24,7 @@
 		</div>
 	</div>
 	<script>
+		
 		if (annyang)
 		{
 			annyang.debug();
@@ -55,23 +56,29 @@
 				console.log("Matched tags: " + matched);
 			});
 		}
+
 	</script>
 
 	<script>
-			// Start listening button
-			$("#start").click(function()
-			{
-				$(".control").toggleClass('hidden');
-				annyang.start({ autoRestart: true, continuous: false });
-				console.log("Started listening");
-			});
+		// NoSleep library stops device from automatically sleeping
+		var noSleep = new noSleep();
+		
+		// Start listening button
+		$("#start").click(function()
+		{
+			$(".control").toggleClass('hidden');
+			noSleep.enable();
+			annyang.start({ autoRestart: true, continuous: false });
+			console.log("Started listening");
+		});
 
-			// Stop listening button
-			$("#stop").click(function()
-			{
-				$(".control").toggleClass('hidden');
-				annyang.abort();
-				console.log("Stopped listening");
-			});
+		// Stop listening button
+		$("#stop").click(function()
+		{
+			$(".control").toggleClass('hidden');
+			noSleep.disable();
+			annyang.abort();
+			console.log("Stopped listening");
+		});
 	</script>
 {% endblock %}
