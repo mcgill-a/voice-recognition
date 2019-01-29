@@ -67,19 +67,18 @@
 		var noSleep = new NoSleep();
 		
 		$(window).blur(function(){
-			noSleep.disable();
-			noSleep.enable();
+			$('#display-tags').append("<li>WINDOW INACTIVE</li>"); 
+			
 		});
 		$(window).focus(function(){
-			noSleep.disable();
-			noSleep.enable();
+			$('#display-tags').append("<li>WINDOW ACTIVE</li>"); 
 		});
 
 		// Start listening button
 		$("#start").click(function()
 		{
 			$(".control").toggleClass('hidden');
-			
+			noSleep.enable();
 			annyang.start({ autoRestart: true, continuous: false });
 			console.log("Started listening");
 		});
@@ -88,7 +87,7 @@
 		$("#stop").click(function()
 		{
 			$(".control").toggleClass('hidden');
-			
+			noSleep.disable();
 			annyang.abort();
 			console.log("Stopped listening");
 		});
