@@ -65,14 +65,6 @@
 	<script>
 		// NoSleep library stops device from automatically sleeping while listening
 		var noSleep = new NoSleep();
-		
-		$(window).blur(function(){
-			$('#display-tags').append("<li>WINDOW INACTIVE</li>"); 
-			
-		});
-		$(window).focus(function(){
-			$('#display-tags').append("<li>WINDOW ACTIVE</li>"); 
-		});
 
 		// Start listening button
 		$("#start").click(function()
