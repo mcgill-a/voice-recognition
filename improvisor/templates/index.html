@@ -52,8 +52,11 @@
 						matched.push(tagList[i]);
 					}
 				}
-				$('#display-tags').append("<li>" + matched + "</li>"); 
-				console.log("Matched tags: " + matched);
+				if (matched.length > 0)
+				{
+					$('#display-tags').append("<li>" + matched + "</li>"); 
+					console.log("Matched tags: " + matched);
+				}
 			});
 		}
 
@@ -61,7 +64,7 @@
 
 	<script>
 		// NoSleep library stops device from automatically sleeping
-		var noSleep = new noSleep();
+		var noSleep = new NoSleep();
 		
 		// Start listening button
 		$("#start").click(function()
